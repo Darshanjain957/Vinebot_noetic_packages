@@ -1,0 +1,13 @@
+<launch>
+  <arg name="uid" default="6fAQ1A"/>
+  <arg name="frame_id" default="imu_link" />
+
+
+  <node pkg="tinkerforge_imu_ros" name="tinkerforge_imu_ros" type="tinkerforge_imu_ros" output="screen" respawn="true">
+    <param name="frame_id" value="$(arg frame_id)" />
+    <param name="period_ms" value="20" />
+    <param name="uid" value="$(arg uid)" />
+</node>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="brick_imu_tf_publisher" args="0.66 0 0.34 0 0 0 1 base_link $(arg frame_id)" /> 
+
+</launch>
