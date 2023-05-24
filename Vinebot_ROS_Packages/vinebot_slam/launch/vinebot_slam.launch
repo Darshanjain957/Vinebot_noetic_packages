@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="gmapping" type="slam_gmapping" name="vinebot_slam" output="screen">
+		<rosparam command="load" file="$(find vinebot_slam)/config/gmapping_params.yaml"/>
+	</node>
+</launch>
