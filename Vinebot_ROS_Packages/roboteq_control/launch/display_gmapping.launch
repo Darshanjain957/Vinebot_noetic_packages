@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+
+
+ <!-- You can setup here the example your differential drive robot
+        The parameters avaible in this example are:
+         - size: Robot radius
+         - radius: Radius wheels
+         - wheelbase: Distance between wheels
+    -->
+ <arg name="size"   default="1.0"/>
+   <arg name="radius"   default="0.334"/>
+   <arg name="wheelbase"   default="0.72"/>
+   <arg name="wheelwidth"   default="0.16"/>
+ 
+  <arg default="$(find roboteq_control)/urdf/differential-robot.urdf.xacro" name="model"/>
+  <arg default="true" name="gui"/>
+  <arg default="$(find vinebot_description)/rviz/vinebot_rviz_slam.rviz" name="rvizconfig"/>
+  
+  <!-- Load differential drive robot URDF/XACRO to param server -->
+   <param name="robot_description"
+      command="$(find xacro)/xacro '$(find roboteq_control)/urdf/differential-robot.urdf.xacro'
+               size:=$(arg size)
+               radius:=$(arg radius)
+               wheelbase:=$(arg wheelbase)
+               wheelwidth:=$(arg wheelwidth)"
+   />
+  <param name="use_gui" value="$(arg gui)"/>
+  <!-- Activate node to propagate the joint state -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+  <!-- Activate node to propagate the robot state -->
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+ 
+  <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+
+   <!-- SLAM-Gmapping -->
+   <include file="$(find vinebot_slam)/launch/vinebot_slam.launch" />
+   
+
+
+  
+
+</launch>

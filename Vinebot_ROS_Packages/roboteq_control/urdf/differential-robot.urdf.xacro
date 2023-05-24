@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<!--
+Copyright (C) 2020, Raffaello Bonghi <raffaello@rnext.it>
+All rights reserved
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright 
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its 
+   contributors may be used to endorse or promote products derived 
+   from this software without specific prior written permission.
+ 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, 
+BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS 
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
+OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+-->
+<robot name="vinebot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+<xacro:include filename="$(find vinebot_description)/urdf/materials.xacro" />
+
+   
+
+    <!-- Arguments -->
+    <xacro:arg name="size"   default="0.8"/> <!-- size robot -->
+    <xacro:arg name="radius"   default="0.08"/> <!-- radius wheels -->
+    <xacro:arg name="wheelbase"   default="0.55"/> <!-- wheelbase differential drive -->
+    <xacro:arg name="use_nominal_extrinsics" default="false"/><!-- camera Exentric properties-->
+    <!-- Global properties -->
+    <xacro:property name="M_PI" value="3.14159"/>
+    <xacro:property name="robot_size" value="$(arg size)"/>
+    <xacro:property name="wheel_radius" value="$(arg radius)"/>
+    <xacro:property name="mwheelbase" value="$(arg wheelbase)"/>
+    <xacro:property name="wheel_width" value="$(arg wheelwidth)"/>
+    <xacro:property name="clearance" value="0.0"/>
+<xacro:include filename="$(find roboteq_control)/urdf/vinebot_d455.urdf.xacro" />
+    
+<!--<xacro:include filename="$(find vinebot_description)/urdf/vinebot.gazebo" />
+<xacro:include filename="$(find vinebot_description)/gazebo/vinebot_detailed_plugins.gazebo" />-->
+<!-- base_footprint is on the ground under the robot -->
+<link name="base_footprint">
+	<visual>
+		<origin xyz="0.35 0 0" rpy="0 0 0" />
+		<geometry>
+      <box size="0.9 0.6 0.001"/>
+    </geometry>
+		<material name="blue"/>
+	</visual>
+</link>
+
+<joint name="base_footprint_to_base_link" type="fixed">
+	<origin xyz="0 0 ${clearance}" rpy="0 0 0" />
+	<parent link="base_footprint" />
+	<child link="base_link" />
+</joint>
+
+
+
+
+<link name="base_link">
+<inertial>
+    <origin rpy="0 0 0" xyz="0.3733685481948254 3.982448910416214e-05 0.15740777035883136"/>
+    <mass value="76.37622695455383"/>
+    <inertia ixx="1.647594" ixy="0.003226" ixz="0.018226" iyy="3.898909" iyz="0.003649" izz="4.783297"/>
+  </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://vinebot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+    </link>
+    
+
+<link name="left_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0 0 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    
+
+   
+    <joint name="left_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin rpy="${M_PI/2} 0 0" xyz="0 ${mwheelbase/2} ${wheel_radius}"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>
+
+
+
+    <link name="right_wheel">
+        <visual>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/> 
+        </geometry>
+            <material name="blue">
+                <color rgba="0 0 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+  
+
+
+
+    <joint name="right_joint" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin rpy="${M_PI/2} 0 0" xyz="0 -${mwheelbase/2} ${wheel_radius}"/>
+        <limit effort="100" velocity="100"/>
+        <joint_properties damping="0.0" friction="0.0"/>
+    </joint>    
+    
+<link name="right_back_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.8410577210431776e-07 0.0016996659402881975 9.692134567140798e-08"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="-0.0" ixz="-0.0" iyy="0.001378" iyz="0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.005176 0.204252 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.005176 0.204252 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_back_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.005176 -0.204252 0.133306"/>
+  <parent link="base_link"/>
+  <child link="right_back_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint> 
+
+<link name="left_back_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.841058909094571e-07 0.011699665940287929 9.692152316831404e-08"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="0.0" ixz="0.0" iyy="0.001378" iyz="0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.005176 -0.195748 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.005176 -0.195748 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<joint name="left_back_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.005176 0.195748 0.133306"/>
+  <parent link="base_link"/>
+  <child link="left_back_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<link name="rubber_right_back_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.907394383667259e-07 0.027000145829504024 2.0925773944191484e-07"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="0.0" ixz="-0.0" iyy="0.015831" iyz="-0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.005176 0.230105 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.005176 0.230105 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.025853 0.0"/>
+  <parent link="right_back_1"/>
+  <child link="rubber_right_back_1"/>
+</joint> 
+    
+
+<link name="rubber_left_back_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.212191398702143e-07 -0.026999813948927948 -4.462515007519485e-08"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="-0.0" ixz="-0.0" iyy="0.015831" iyz="-0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.005176 -0.235 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.005176 -0.235 -0.133306"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.039252 0.0"/>
+  <parent link="left_back_1"/>
+  <child link="rubber_left_back_1"/>
+</joint>
+
+
+<link name="right_front_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.132365639617717e-08 0.0016996659402878922 -3.301854983317476e-07"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="0.0" ixz="-0.0" iyy="0.001378" iyz="-0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.716 0.204252 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.716 0.204252 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_right_front_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.2616058797654262e-07 -0.026999813948928142 -2.828716338387771e-07"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="-0.0" ixz="-0.0" iyy="0.015831" iyz="0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.716 0.175 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.716 0.175 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<joint name="right_front_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.716 -0.204252 0.133748"/>
+  <parent link="base_link"/>
+  <child link="right_front_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid6" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.029252 0.0"/>
+  <parent link="right_front_1"/>
+  <child link="rubber_right_front_1"/>
+</joint>
+
+<link name="left_front_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.1323690035934817e-08 0.0016996659402879477 -3.301854323012332e-07"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="0.0" ixz="-0.0" iyy="0.001378" iyz="-0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.716 -0.205748 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.716 -0.205748 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_left_front_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.0338399381026875e-07 0.02700014582950408 -2.38325770202108e-07"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="0.0" ixz="-0.0" iyy="0.015831" iyz="0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.716 -0.179895 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.716 -0.179895 -0.133748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rigth_middle_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="5.9225261972439824e-08 0.00169966594028792 -1.5836653072254236e-08"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="-0.0" ixz="-0.0" iyy="0.001378" iyz="0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.361346 0.204252 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rigth_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.361346 0.204252 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rigth_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_rigth_middle_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.7472558466735677e-07 0.02700014582950408 -1.1903490726439259e-07"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="-0.0" ixz="-0.0" iyy="0.015831" iyz="-0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.361346 0.230105 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_rigth_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.361346 0.230105 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_rigth_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_middle_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="5.922538787173082e-08 0.011699665940288206 -1.5836558509008114e-08"/>
+    <mass value="0.5239439717413419"/>
+    <inertia ixx="0.000916" ixy="0.0" ixz="-0.0" iyy="0.001378" iyz="-0.0" izz="0.000916"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.361346 -0.195748 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.361346 -0.195748 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/left_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rubber_left_middle_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-7.859725481562663e-09 0.02700014582950408 -1.5544240267173492e-07"/>
+    <mass value="1.3322018275318805"/>
+    <inertia ixx="0.008837" ixy="-0.0" ixz="0.0" iyy="0.015831" iyz="0.0" izz="0.008837"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.361346 -0.179895 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.361346 -0.179895 -0.133643"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/rubber_left_middle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="left_front_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.716 0.205748 0.133748"/>
+  <parent link="base_link"/>
+  <child link="left_front_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.025853 0.0"/>
+  <parent link="left_front_1"/>
+  <child link="rubber_left_front_1"/>
+</joint>
+
+<joint name="rigth_middle_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.361346 -0.204252 0.133643"/>
+  <parent link="base_link"/>
+  <child link="rigth_middle_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.025853 0.0"/>
+  <parent link="rigth_middle_1"/>
+  <child link="rubber_rigth_middle_1"/>
+</joint>
+
+<joint name="left_middle_to_base" type="fixed">
+  <origin rpy="0 0 0" xyz="0.361346 0.195748 0.133643"/>
+  <parent link="base_link"/>
+  <child link="left_middle_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid12" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.015853 0.0"/>
+  <parent link="left_middle_1"/>
+  <child link="rubber_left_middle_1"/>
+</joint>
+
+<link name="box_cover_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.38420073940527333 0.10938180614612773 -0.007044227591617158"/>
+    <mass value="7.618053194179163"/>
+    <inertia ixx="0.077837" ixy="-1.8e-05" ixz="0.000345" iyy="0.526952" iyz="6.9e-05" izz="0.600556"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.09 0.109252 -0.368748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/box_cover_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.09 0.109252 -0.368748"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/box_cover_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="livox_laser">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.13986365188962635 0.14255852645544653 0.12358394887627916"/>
+    <mass value="4.964219605335798"/>
+    <inertia ixx="0.016911" ixy="3.3e-05" ixz="-3.6e-05" iyy="0.017001" iyz="-2.2e-05" izz="0.012497"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.706 0.141613 -0.382387"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/livox_sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.706 0.141613 -0.382387"/>
+    <geometry>
+      <mesh filename="package://vinebot_description/meshes/livox_sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid13" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.09 -0.109252 0.368748"/>
+  <parent link="base_link"/>
+  <child link="box_cover_1"/>
+</joint>
+
+<joint name="Rigid14" type="fixed">
+  <origin rpy="0 0 0" xyz="0.796 -0.032361 0.013639"/>
+  <parent link="box_cover_1"/>
+  <child link="livox_laser"/>
+</joint>
+
+<!-- camera integration -->
+<link name="camera_base_link"/>
+
+<xacro:sensor_d455 parent="camera_base_link" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</xacro:sensor_d455>
+
+<joint name="camera_base_to_box_cover_1" type="fixed">
+    <parent link="box_cover_1"/>
+    <child link="camera_base_link"/>
+    <origin xyz="0.83 0.11 -0.068" rpy="0.0 0.0 0.0"/>
+</joint>
+  <!-- Livox Mid 40 integration-->
+<link name ="livox_frame"/>
+<joint name="livox_lidar_to_livox_frame" type="fixed">
+  <parent link="livox_laser"/>
+  <child link="livox_frame"/>
+  <origin xyz="0.05 0.14 0.07" rpy="0.0 0.0 0.0"/>
+</joint>
+
+
+</robot>

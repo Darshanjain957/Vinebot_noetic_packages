@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- Displaying the Navigation on Rviz -->
+    <include file="$(find roboteq_control)/launch/display.launch" />
+    <!-- BNO055 IMU launch -->
+     <include file="$(find ros_imu_bno055)/launch/imu.launch" />
+    <include file="$(find tinkerforge_imu_ros)/launch/bricks_v2.launch" />
+    <!-- ROBOTEQ launch -->
+    <include file="$(find roboteq_control)/launch/differential_drive.launch" />
+    <!-- Localization (merging odometry+IMU) -->
+    <include file="$(find vinebot_localization)/launch/start_ekf_localization.launch" />
+
+
+</launch>
