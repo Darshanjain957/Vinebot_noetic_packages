@@ -1,0 +1,26 @@
+<?xml version="1.0"?> 
+<launch>
+
+    <arg name="serial_port" default="/dev/imu" />
+    <arg name="frame_id" default="imu2_link" />
+    <arg name="operation_mode" default="IMU"/>
+    <arg name="oscillator" default="INTERNAL" />
+    <arg name="reset_orientation" default="true" />
+    <arg name="frequency" default="200" /> 
+    <arg name="use_magnetometer" default="true" />
+    <arg name="use_temperature" default="false" /> 
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="imu_tf_publisher" args="0 0 0.34 0 0 0 1 base_link $(arg frame_id)" /> 
+
+    <node pkg="ros_imu_bno055" type="imu_ros.py" name="ros_imu_bno055_node" output="screen">
+        <param name="serial_port" value="$(arg serial_port)" />
+        <param name="frame_id" value="$(arg frame_id)" />
+        <param name="operation_mode" value="$(arg operation_mode)" />
+        <param name="oscillator" value="$(arg oscillator)" />
+        <param name="reset_orientation" value = "$(arg reset_orientation)" />
+        <param name="frequency" value="$(arg frequency)" />
+        <param name="use_magnetometer" value="$(arg use_magnetometer)" />    
+        <param name="use_temperature" value="$(arg use_temperature)" />    
+    </node>
+
+</launch>
