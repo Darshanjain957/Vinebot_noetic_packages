@@ -1,0 +1,6 @@
+<launch>
+	<arg name="map_file" default="$(find vinebot_slam)/maps/labroomwith2imu.yaml" />
+	<node pkg="map_server" name="map_server_vinebot" type="map_server" args="$(arg map_file)" />
+	<include file="$(find vinebot_navigation)/launch/amcl.launch" />
+	<include file="$(find vinebot_navigation)/launch/move_base.launch" />
+</launch>
