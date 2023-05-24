@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find vinebot_description)/launch/controller.yaml" command="load"/>
+<node args="right_back_to_base_position_controller left_back_to_base_position_controller right_front_to_base_position_controller left_front_to_base_position_controller rigth_middle_to_base_position_controller left_middle_to_base_position_controller joint_state_controller " name="controller_spawner" ns="vinebot" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/vinebot/joint_states"/>
+</node>
+
+</launch>

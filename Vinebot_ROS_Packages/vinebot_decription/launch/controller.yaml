@@ -1,0 +1,31 @@
+vinebot_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  right_back_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_back_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  left_back_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: left_back_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  right_front_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: right_front_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  left_front_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: left_front_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  rigth_middle_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rigth_middle_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  left_middle_to_base_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: left_middle_to_base
+    pid: {p: 100.0, i: 0.01, d: 10.0}
