@@ -1,0 +1,8 @@
+prefix=/home/irobot/catkin_ws/src/Vinebot_ROS_Packages/vinebot_description/build/devel
+
+Name: vinebot_description
+Description: Description of vinebot_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
