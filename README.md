@@ -21,17 +21,29 @@ detailed instructions can be found here : https://github.com/IntelRealSense/libr
 
 Register the server's public key
 $ sudo mkdir -p /etc/apt/keyrings
+
 $ curl -sSf https://librealsense.intel.com/Debian/librealsense.pgp | sudo tee /etc/apt/keyrings/librealsense.pgp > /dev/null
+
 Add the server to the list of repositories:
+
 $ echo "deb [signed-by=/etc/apt/keyrings/librealsense.pgp] https://librealsense.intel.com/Debian/apt-repo `lsb_release -cs` main" | \
+
 $ sudo tee /etc/apt/sources.list.d/librealsense.list
+
 $ sudo apt-get update
+
 install realsesne sdk:
+
 $ sudo apt-get install librealsense2-dkms
+
 $ sudo apt-get install librealsense2-utils
+
 optional dev and debug packages:
+
 $ sudo apt-get install librealsense2-dev
+
 $ sudo apt-get install librealsense2-dbg
+
 
 these packages are suitable for ubuntu 20.04 and requires ros noetic.
 § sudo apt install ros-noetic-desktop-full
@@ -39,16 +51,25 @@ these packages are suitable for ubuntu 20.04 and requires ros noetic.
 
 # Make catkin workspace if does not exist and clone this repo
 
+
 mkdir -p ~/catkin_ws/src
+
 cd ~/catkin_ws/src
+
 git clone 
+
 # Install all dependecies
+
 cd ..
+
 rosdep install --from-paths src --ignore-src -r -y
+
 # Compile package
+
 catkin_make
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
 source ~/.bashrc
 
 
