@@ -17,6 +17,7 @@ Livox SDK: https://github.com/Livox-SDK/Livox-SDK
 
 Realsense2 sdk Installation:
 detailed instructions can be found here : https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+
 for jetson devices please refer: https://github.com/IntelRealSense/librealsense/issues/6964#issuecomment-707501049
 
 Register the server's public key
