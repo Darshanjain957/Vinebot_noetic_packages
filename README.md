@@ -18,7 +18,6 @@ Livox SDK: https://github.com/Livox-SDK/Livox-SDK
 Realsense2 sdk Installation:
 detailed instructions can be found here : https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 
-for jetson devices please refer: https://github.com/IntelRealSense/librealsense/issues/6964#issuecomment-707501049
 
 Register the server's public key
 $ sudo mkdir -p /etc/apt/keyrings
@@ -45,9 +44,15 @@ $ sudo apt-get install librealsense2-dev
 
 $ sudo apt-get install librealsense2-dbg
 
+for jetson devices refer 
+https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md
+
+follow the debian package installation guide  
 
 these packages are suitable for ubuntu 20.04 and requires ros noetic.
+
 § sudo apt install ros-noetic-desktop-full
+
 
 
 # Make catkin workspace if does not exist and clone this repo
