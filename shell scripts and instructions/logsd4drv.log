@@ -1,0 +1,4 @@
+[info][controller 1] Created devices /dev/input/js1 (joystick) /dev/input/event10 (evdev) 
+[info][controller 1] Connected to Bluetooth Controller (84:30:95:29:AC:8E hidraw0)
+[info][hidraw] Scanning for devices
+[info][controller 1] Battery: 50%
