@@ -4,14 +4,23 @@ Prerequisites and dependencies
 before installing the catkin workspace some additional libraries and dependencies are required.
 
 ros noetic installation:  § sudo apt install ros-noetic-desktop-full
-Pcl :                     $ sudo apt install libpcl-dev  pcl-tools       
-Eigen:                    $ sudo apt install libeigen3-dev               
+
+Pcl :                     $ sudo apt install libpcl-dev  pcl-tools
+
+Eigen:                    $ sudo apt install libeigen3-dev 
+
 opencv:                   $ sudo apt install libopencv-dev python3-opencv
+
 ddynamic_reconfigure:     $ sudo apt install ros-noetic-ddynamic-reconfigure
+
 rtabmap and rtabmap-ros : $ sudo apt install ros-noetic-rtabmap ros-noetic-rtabmap-ros
+
 joystick driver:          $ sudo apt install ros-noetic-joy
+
 ds4drv:                   $ sudo pip install ds4drv
+
 LIVOX SDK Installation: 
+
 the livox sensor requires Livox SDK a software development kit developed by livox for the communication between livox mid 40 and ros.
 
 The package can be installed form the git hub repository provided by livox, detailed installation instructions are provided by livox in the git hub repository.
