@@ -63,5 +63,27 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 source ~/.bashrc
 
+# launch instructions 
+
+to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
+
+$ roslaunch  roslaunch roboteq_control bringup_rtab_imu.launch 
+
+
+to move the vinebot using the keyboard:
+
+$ rosrun  rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
+
+to move the vinebot using the shell scripts open a terminal in the folder with the shell shripts (shell scripts and instructions)
+§ sudo ls
+§ ./startjoystick.sh
+ this step must be performed after the bluetooth joystick is connected to the operating system and the bringup file is launched 
+
+to launch vinebot with rtabmap in the localization node with ekf filter based fused localization note that this step requires a previously created map in .db format 
+
+$ roslaunch roboteq_control bringup_rtab_localization_imu.launch 
+
+
+
 
 
