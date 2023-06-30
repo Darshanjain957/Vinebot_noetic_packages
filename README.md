@@ -9,7 +9,8 @@ Eigen:                    $ sudo apt install libeigen3-dev
 opencv:                   $ sudo apt install libopencv-dev python3-opencv
 ddynamic_reconfigure:     $ sudo apt install ros-noetic-ddynamic-reconfigure
 rtabmap and rtabmap-ros : $ sudo apt install ros-noetic-rtabmap ros-noetic-rtabmap-ros
-
+joystick driver:          $ sudo apt install ros-noetic-joy
+ds4drv:                   $ sudo pip install ds4drv
 LIVOX SDK Installation: 
 the livox sensor requires Livox SDK a software development kit developed by livox for the communication between livox mid 40 and ros.
 
