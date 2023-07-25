@@ -67,12 +67,12 @@ source ~/.bashrc
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
 
-$ roslaunch  roslaunch roboteq_control bringup_rtab_imu.launch 
+$ roslaunch roboteq_control bringup_rtab_imu.launch 
 
 
 to move the vinebot using the keyboard:
 
-$ rosrun  rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
+$ rosrun  teleop_twist_keyboard teleop_twist_keyboard.py 
 
 to move the vinebot using the shell scripts open a terminal in the folder with the shell shripts (shell scripts and instructions)
 
