@@ -68,8 +68,10 @@ source ~/.bashrc
 the vinebot run on Linux based system (Ubuntu 20.04) and uses ROS noetic for the pacckage integration. the vinebot is ecquipped with various sensors and actators. the Vinebot uses a generic version of Roboteq dual motor controller(HBL2350) to control Dual DC servomotors. The motor controller is capable of accepting commands from PC/ microcontroller via USB port and using the protocol RS-232 with support for analog and digital I/O capabilities. Figure 1 depicts the system overview  and layout of the vinebot.
 
 ![Alt text](/images/PIC_OVERVIEW.PNG "VINEBOT-LAYOUT")
-
+<p align="center">
 Figure 1: layout of the robot. 
+</p>
+
 #  hardware Setup: 
 
 
