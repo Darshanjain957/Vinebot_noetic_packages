@@ -54,9 +54,22 @@ rosdep install --from-paths src --ignore-src -r -y
 
 (only for jetson xavier nx) for the realsense camera to function with ros the cmakelist.txt file of realsense2_camera in realsesne-ros package must be modified as per the instructions from the following link:
 https://github.com/IntelRealSense/realsense-ros/issues/2326#issuecomment-1107658481
+# Udev Rules 
+This package is binding the USD devices under static name, so you can install the udev rule to identify the device as given in launch files. In order to do so edit /etc/udev/rules.d/10-local.rules file under root user:
+
+$sudo su root 
+$nano /etc/udev/rules.d/99-usb-serial.rules
+#add the following line inside the file 
+SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="23f3", SYMLINK+="roboteq"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", SYMLINK+="imu"
+#now reload the rules files using the following code 
+$sudo udevadm control --reload-rules && udevadm trigger
+Troubleshooting:
+
+If you do not have the permission to open the serial port, try to read this article https://websistent.com/fix-serial-port-permission-denied-errors-linux/
 
 # Compile package
-
+change to your catkin_ws folder 
 catkin_make
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
@@ -72,8 +85,19 @@ the vinebot runS on Linux based system (Ubuntu 20.04) and uses ROS noetic for th
 Figure 1: layout of the robot. 
 </p>
 
-# Roboteq Motor controller:
+# bring_up launch files: 
+In order for the vinebot to navigate effiently a set of bring_up launch files are created, different bringup launch files have different functionalities, most customized bringup files follow the base file "bringup.launch" in "Vinebot_ROS_Packages/roboteq_control/launch/" folder.
+Bringup.launch file launches multiple nodes at the same time,namely the motor controller node, the urdf node, and the imu node.
+an advanced version of the bringup.launch file called as bringup_rtab_imu.launch can be used for the localization and mapping of the environment using RTAB MAP, REALSENSE D455, bno 055 IMU, and EKF  based localization filter, this paticular Launch file also utilizes the IMU data provided by the IMU sensor interated into the Depth camera.
 
+# Roboteq Motor controller:
+The dual DC motors require 48v(DC) to operate and are controlled by a generic version of the roboteq motor controller, the motor controller communicates with the operating system via USB port. the ros launch file  "differential_drive.launch "  from Vinebot_ROS_Packages/roboteq_control/launch/differential_drive.launch launches the node that can be used to send commands to the motor controller. in order for the differential_drive.launch file to recogonize the serial port of the USB connceted to the motor controller a set of udev rules must be approved. the pocedure to update the udev rules is provided in the udev rules section. Figure 2 depicts the motor controller with some other components.
+![Alt text](/images/vinebot_hardware_setup.jpeg "VINEBOT-hardware setup")
+<p align="center">
+Figure 2: 1.- DC power source from the batteries (48v), 2.-Motor Controller, 3.- 48v to 5v DC to DC converter, 4.- 48v to 12v DC to DC converter, 5.- BNO055 IMU Sensor and 6.- Wireless Emergency stop. 
+</p>
+
+# Robot model-  the URDF file of the Vinebot.
 
 #  hardware Setup: 
 
