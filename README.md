@@ -91,13 +91,44 @@ Bringup.launch file launches multiple nodes at the same time,namely the motor co
 an advanced version of the bringup.launch file called as bringup_rtab_imu.launch can be used for the localization and mapping of the environment using RTAB MAP, REALSENSE D455, bno 055 IMU, and EKF  based localization filter, this paticular Launch file also utilizes the IMU data provided by the IMU sensor interated into the Depth camera.
 
 # Roboteq Motor controller:
-The dual DC motors require 48v(DC) to operate and are controlled by a generic version of the roboteq motor controller, the motor controller communicates with the operating system via USB port. the ros launch file  "differential_drive.launch "  from Vinebot_ROS_Packages/roboteq_control/launch/differential_drive.launch launches the node that can be used to send commands to the motor controller. in order for the differential_drive.launch file to recogonize the serial port of the USB connceted to the motor controller a set of udev rules must be approved. the pocedure to update the udev rules is provided in the udev rules section. Figure 2 depicts the motor controller with some other components.
+The dual DC motors require 48v(DC) to operate and are controlled by a generic version of the roboteq motor controller, the motor controller communicates with the operating system via USB port. the ros launch file  "differential_drive.launch "  from Vinebot_ROS_Packages/roboteq_control/launch/differential_drive.launch launches the node that can be used to send commands to the motor controller. in order for the differential_drive.launch file to recogonize the serial port of the USB connceted to the motor controller a set of udev rules must be approved. The pocedure to update the udev rules is provided in the udev rules section.
+A short description of the motors is given below, and Figure 2 depicts the motor controller with some other components.
+
+Description Specification
+Operation Voltage 48V
+Output power 400W each
+Rated current 8-10A
+Peak Torque from the motor 15Nm
+Rated RPM from the gearbox 100-200 RPM
+Max velocity 6 km/h
+Climbing slope 45 degrees
+
+
 ![Alt text](/images/vinebot_hardware_setup.jpeg "VINEBOT-hardware setup")
 <p align="center">
 Figure 2: 1.- DC power source from the batteries (48v), 2.-Motor Controller, 3.- 48v to 5v DC to DC converter, 4.- 48v to 12v DC to DC converter, 5.- BNO055 IMU Sensor and 6.- Wireless Emergency stop. 
 </p>
 
-# Robot model-  the URDF file of the Vinebot.
+# Robot model - the URDF file of the Vinebot.
+URDF is an XML format for representing a robot model. THE urdf file contains the necessary joints, links and apprppriate TF transform required for the representation of the Vinebot in ROS. Vinebot_ROS_Packages/vinebot_decription/urdf contains the various xacro files that define the robot model in RVIZ.  The file "display.launch" from Vinebot_ROS_Packages/roboteq_control/launch is used in the bringup.launch files to display the vinebot, it utilizes  "differential-robot.urdf.xacro" a simplified file used for the drive of the robot is provided in the "Vinebot_ROS_Packages/roboteq_control/urdf" to represent the vinebot.
+
+# BNO 055 9 DOF IMU Sensor:
+BNO 055 is one of the IMU sensors that are being utlized in the vinebot, it is located at the rear of the vinebot(figure 2). some of its specifications are listed below:
+The BNO055 can output the following sensor data:
+
+Absolute Orientation (Euler Vector, 100Hz) Three axis orientation data based on a 360° sphere
+Absolute Orientation (Quatenrion, 100Hz) Four point quaternion output for more accurate data manipulation
+Angular Velocity Vector (100Hz) Three axis of 'rotation speed' in rad/s
+Acceleration Vector (100Hz) Three axis of acceleration (gravity + linear motion) in m/s^2
+Magnetic Field Strength Vector (20Hz) Three axis of magnetic field sensing in micro Tesla (uT)
+Linear Acceleration Vector (100Hz) Three axis of linear acceleration data (acceleration minus gravity) in m/s^2
+Gravity Vector (100Hz) Three axis of gravitational acceleration (minus any movement) in m/s^2
+Temperature (1Hz) Ambient temperature in degrees celsius 
+
+for more information about the IMU sensor refer: https://www.adafruit.com/product/2472
+
+the IMU communicates with the operating system via an UART to USB converter. a modification of the USB serial port is required for the ROS packages to recogonize the data from the IMU,an Udev rule is defined,The pocedure to update the udev rules is provided in the udev rules section. THE imu data can be accessd and used by utilizing "imu.launch" from "Vinebot_ROS_Packages/ros_imu_bno055/launch" folder and "ros_imu_bno055" package.
+# Realsense D455
 
 #  hardware Setup: 
 
