@@ -19,7 +19,7 @@ joystick driver:          $ sudo apt install ros-noetic-joy
 
 ds4drv:                   $ sudo pip install ds4drv
 
-LIVOX SDK Installation: 
+# LIVOX SDK Installation: 
 
 the livox sensor requires Livox SDK a software development kit developed by livox for the communication between livox mid 40 and ros.
 
@@ -28,7 +28,7 @@ The package can be installed form the git hub repository provided by livox, deta
 Livox SDK: https://github.com/Livox-SDK/Livox-SDK
 
 
-Realsense2 sdk Installation:
+# Realsense2 sdk Installation:
 detailed instructions can be found here(excluding jetson devices) : https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 
 for jetson devices refer the following link and follow the debian package installation guide.
@@ -129,7 +129,19 @@ for more information about the IMU sensor refer: https://www.adafruit.com/produc
 
 the IMU communicates with the operating system via an UART to USB converter. a modification of the USB serial port is required for the ROS packages to recogonize the data from the IMU,an Udev rule is defined,The pocedure to update the udev rules is provided in the udev rules section. THE imu data can be accessd and used by utilizing "imu.launch" from "Vinebot_ROS_Packages/ros_imu_bno055/launch" folder and "ros_imu_bno055" package.
 # Realsense D455
+RealSense D455 is the depth camera used in this project the camera is mounted at the front of the vehicle, the camera can be used for various purposes like mapping, navigation, object detection and much more. a brief description of the cameras specification is given below:
 
+Specification
+Depth FOV: 87°(H)x58°(V)x 95°(D)
+Colour camera FOV: 90°(H)x63°(V)x 98°(D)
+Ideal Range: 0.4m to 6m
+Output Resolution (Depth): Up to 1280x720
+Output Resolution
+(RGB): Up to 1280X800
+Integrated IMU: Bosch BMI055
+Connector: USB-C
+For additional information about RealSense D455 refer: https://www.intelrealsense.com/depth-camera-d455/
+ The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section.
 #  hardware Setup: 
 
 
