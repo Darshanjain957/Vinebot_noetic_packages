@@ -150,9 +150,9 @@ For additional information about RealSense D455 refer: https://www.intelrealsens
 
  The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section. The ROS package realsesne-ros can be use to access the camera data,there are various launch files in the launch folder  located at "realsense-ros/realsense2_camera/launch/". the launch file "realsense-ros/realsense2_camera/launch/rs_camera_imu.launch" launch the node that publishes camera data as well as the data from the IMU integrated into the camera.     Figure 3 depicts the front view for the vinebot with RealSense D455 and Livox Mid-40.
  
- ![Alt text](/images/ "VINEBOT-hardware setup")
+ ![Alt text](/images/vinebot-center.jpg "vinebot-front" )
 <p align="center">
-Figure 2: 1.- DC power source from the batteries (48v), 2.-Motor Controller, 3.- 48v to 5v DC to DC converter, 4.- 48v to 12v DC to DC converter, 5.- BNO055 IMU Sensor and 6.- Wireless Emergency stop. 
+Figure 2:Vinebot front view 1.- Livox Mid-40 and 2.- RealSense D455   
 </p>
 
 #  hardware Setup: 
