@@ -176,7 +176,11 @@ Power: 10W-40W
 
 A DC-DC converter that converts 48V DC to 12.5 v DC is used to generate the necessary voltage required for the sensor to operate, the converter is depicted in figure 2 ( part number:3). To establish comminication between ROS and the sensor Livox SDK and livox ros driver are required. Livox SDK is the software delelopment kit provided by Livox, it is the communication protocol developed by Livox, it is used to communicate with all Livox devices and to generate pointcloud from the sensors. more information on Livox SDK can be found in : https://github.com/Livox-SDK/Livox-SDK 
 
-Livox-ros-driver is the ros package developed by Livox for the integration of livox based sensors into ROS. Livox_ros_driver requires Livox SDK to operate. the Livox ros driver is situated in  
+Livox-ros-driver is the ros package developed by Livox for the integration of livox based sensors into ROS more information about the package can bae found here: https://github.com/Livox-SDK/livox_ros_driver. 
+
+Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a time synchronization method foe better operation of Livox_ros_driver, Livox suggests the usage of GPS based time synchronization method for optimum results. detailed information about time synchronization can be found in the following link: https://github.com/Livox-SDK/Livox-SDK/wiki/livox-device-time-synchronization-manual.  
+
+The Launch folder " https://github.com/Darshanjain957/Vinebot_noetic_packages/tree/main/ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. 
 #  hardware Setup: 
 
 
