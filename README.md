@@ -155,6 +155,19 @@ For additional information about RealSense D455 refer: https://www.intelrealsens
 Figure 2:Vinebot front view 1.- Livox Mid-40 and 2.- RealSense D455   
 </p>
 
+
+# Livox Mid 40
+Livox mid 40 is the depth lidar used in this project, it is mounted above the camera on a 3D printed stand. the Mid 40 is a powerful sensor capable of scaning upto 260 m. The Mid 40 has one disadvantage, although it has a range of 260 m, it cannot detect objects within 1 m and so the Mid 40 must be placed appropiately. The Lidar is generally suitable for exterior environments and it is capable of generating accurate maps of the environment. some of the specifications of Livox Mid 40 are listed below. 
+Specification
+FOV: 38.4° (circular)
+Max detection Range: 260 m
+Laser wavelength: 905 nm
+Point rate: 1,00,000 points
+Beam divergence: 0.28°(V*) x 0.03°(H)
+voltage range: 10-16 V (DC)
+Power: 10W-40W
+A DC-DC converter that converts 48V DC to 12.5 v DC is used to generate the necessary voltage required for the sensor to operate, the converter is depicted in figure 2 ( part number:3). To establish comminication between ROS and the sensor Livox SDK and livox ros driver are required. Livox SDK is the software delelopment kit provided by Livox, it is the communication protocol developed by Livox, it is used to communicate with all Livox devices and to generate pointcloud from the sensors. more information on Livox SDK can be found in : https://github.com/Livox-SDK/Livox-SDK .
+Livox-ros-driver is the ros package developed by Livox for the integration of livox based sensors into ROS. 
 #  hardware Setup: 
 
 
