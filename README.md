@@ -180,13 +180,17 @@ Livox-ros-driver is the ros package developed by Livox for the integration of li
 
 Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a time synchronization method foe better operation of Livox_ros_driver, Livox suggests the usage of GPS based time synchronization method for optimum results. detailed information about time synchronization can be found in the following link: https://github.com/Livox-SDK/Livox-SDK/wiki/livox-device-time-synchronization-manual.  
 
-The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish conncetion between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enables and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3 depicts a sample configuration file for the Livox Mid 40.
+The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish connection between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enables and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3 depicts a sample configuration file for the Livox Mid 40.
 
-![Alt text](images/Vinbot_front.jpg "vinebot-front")
+![Alt text](images/broadcast code.jpg "broadcastcode")
 <p align="center">
-Figure 3: "livox_lidar_config.json" configuration
+Figure 3a: "livox_lidar_config.json" broadcast configuration, enable connect connects the LIDAR to ROS
 </p>
 
+![Alt text](images/broadcast code.jpg "abroadcastcode")
+<p align="center">
+Figure 3ab "livox_lidar_config.json" broadcast configuration, enable connect connects the LIDAR to ROS
+</p>
 #  hardware Setup: 
 
 
