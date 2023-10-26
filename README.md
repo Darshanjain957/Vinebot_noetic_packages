@@ -182,12 +182,13 @@ Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a t
 
 The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish connection between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enabled and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3a depicts a sample broadcast code configuration file for the Livox Mid 40, andfigure 3b depicts a sample time synchronisation configuration for the Mid 40.
 
-![Alt text](images/broadcast code.jpg "broadcastcode")
+![Alt text](images/broadcast code.jpg  "broadcastcode")
+
 <p align="center">
 Figure 3a: "livox_lidar_config.json" broadcast configuration, enable connect connects the LIDAR to ROS
 </p>
 
-![Alt text](images/timesync config_1.jpg "time_sync")
+![Alt text](images/timesync  "time_sync")
 <p align="center">
 Figure 3b "livox_lidar_config.json" time sync configuration, Enable TimeSync and set Time circuit Port
 </p>
