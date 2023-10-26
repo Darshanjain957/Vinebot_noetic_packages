@@ -195,8 +195,13 @@ Figure 3b "livox_lidar_config.json" time sync configuration, Enable TimeSync and
 
 # RTAB-MAP:
 RTAB-Map (Real-Time Appearance-Based Mapping) is a RGB-D, Stereo and Lidar Graph-Based SLAM approach based on an incremental appearance-based loop closure detector. The loop closure detector uses a bag-of-words approach to determinate how likely a new image comes from a previous location or a new location. more information about RTABMAP can be found from https://introlab.github.io/rtabmap/ 
+
 the ROS page of RTAB-MAP can be found from https://github.com/introlab/rtabmap_ros .
-RTAB-MAP can be installed using vaious methods the simplest method to install RTAB map is through ROS binaries, i.e. $  sudo apt install ros-$ROS_DISTRO-rtabmap* . 
+
+RTAB-MAP can be installed using vaious methods the simplest method to install RTAB map is through ROS binaries.
+
+i.e. $  sudo apt install ros-$ROS_DISTRO-rtabmap*  
+
 the launch files of RTABMAP are stored in the "/opt/ros/noetic" folder. A simplified version of the launch file(realsense-ros/realsense2_camera/launch/opensource_tracking.launch) to launch RTAB-MAP is proveded in the "realsense-ros/realsense2_camera/launch" folder. the latest version of the launch file with updated parameters is realsense-ros/realsense2_camera/launch/opensource_tracking_vinebot_imu.launch lcted in the same folder.
 
 #  hardware Setup: 
