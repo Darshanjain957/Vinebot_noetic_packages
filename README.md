@@ -148,7 +148,7 @@ Connector: USB-C
 
 For additional information about RealSense D455 refer: https://www.intelrealsense.com/depth-camera-d455/
 
- The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section. The ROS package realsesne-ros can be use to access the camera data,there are various launch files in the launch folder  located at "realsense-ros/realsense2_camera/launch/". the launch file "realsense-ros/realsense2_camera/launch/rs_camera_imu.launch" launch the node that publishes camera data as well as the data from the IMU integrated into the camera.     Figure 3 depicts the front view for the vinebot with RealSense D455 and Livox Mid-40.
+ The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section. The ROS package realsesne-ros can be use to access the camera data,there are various launch files in the launch folder  located at "realsense-ros/realsense2_camera/launch". the launch file "realsense-ros/realsense2_camera/launch/rs_camera_imu.launch" launch the node that publishes camera data as well as the data from the IMU integrated into the camera.     Figure 3 depicts the front view for the vinebot with RealSense D455 and Livox Mid-40.
  
  ![Alt text](images/Vinbot_front.jpg "vinebot-front")
 <p align="center">
@@ -180,7 +180,13 @@ Livox-ros-driver is the ros package developed by Livox for the integration of li
 
 Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a time synchronization method foe better operation of Livox_ros_driver, Livox suggests the usage of GPS based time synchronization method for optimum results. detailed information about time synchronization can be found in the following link: https://github.com/Livox-SDK/Livox-SDK/wiki/livox-device-time-synchronization-manual.  
 
-The Launch folder " https://github.com/Darshanjain957/Vinebot_noetic_packages/tree/main/ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. 
+The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish conncetion between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enables and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3 depicts a sample configuration file for the Livox Mid 40.
+
+![Alt text](images/Vinbot_front.jpg "vinebot-front")
+<p align="center">
+Figure 3: "livox_lidar_config.json" configuration
+</p>
+
 #  hardware Setup: 
 
 
