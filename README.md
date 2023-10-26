@@ -77,7 +77,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
 
-# operating the vinebot:
+# Operating the vinebot:
 the vinebot runS on Linux based system (Ubuntu 20.04) and uses ROS noetic for the pacckage integration and it is ecquipped with various sensors and actators. the Vinebot uses a generic version of Roboteq dual motor controller(HBL2350) to control Dual DC servomotors. The motor controller is capable of accepting commands from PC/ microcontroller via USB port and using the protocol RS-232 with support for analog and digital I/O capabilities. Figure 1 depicts the system overview  and layout of the vinebot.
 
 ![Alt text](/images/PIC_OVERVIEW.PNG "VINEBOT-LAYOUT")
@@ -192,6 +192,13 @@ Figure 3a: "livox_lidar_config.json" broadcast configuration, enable connect con
 <p align="center">
 Figure 3b "livox_lidar_config.json" time sync configuration, Enable TimeSync and set Time circuit Port
 </p>
+
+# RTAB-MAP:
+RTAB-Map (Real-Time Appearance-Based Mapping) is a RGB-D, Stereo and Lidar Graph-Based SLAM approach based on an incremental appearance-based loop closure detector. The loop closure detector uses a bag-of-words approach to determinate how likely a new image comes from a previous location or a new location. more information about RTABMAP can be found from https://introlab.github.io/rtabmap/ 
+the ROS page of RTAB-MAP can be found from https://github.com/introlab/rtabmap_ros .
+RTAB-MAP can be installed using vaious methods the simplest method to install RTAB map is through ROS binaries, i.e. $  sudo apt install ros-$ROS_DISTRO-rtabmap* . 
+the launch files of RTABMAP are stored in the "/opt/ros/noetic" folder. A simplified version of the launch file(realsense-ros/realsense2_camera/launch/opensource_tracking.launch) to launch RTAB-MAP is proveded in the "realsense-ros/realsense2_camera/launch" folder. the latest version of the launch file with updated parameters is realsense-ros/realsense2_camera/launch/opensource_tracking_vinebot_imu.launch lcted in the same folder.
+
 #  hardware Setup: 
 
 
