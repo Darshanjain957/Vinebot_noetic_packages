@@ -198,7 +198,7 @@ RTAB-Map (Real-Time Appearance-Based Mapping) is a RGB-D, Stereo and Lidar Graph
 
 the ROS page of RTAB-MAP can be found from https://github.com/introlab/rtabmap_ros .
 
-RTAB-MAP can be installed using vaious methods the simplest method to install RTAB map is through ROS binaries.
+RTAB-MAP can be installed using vaious methods, but the simplest method to install RTAB map is through ROS binaries.
 
 i.e. $  sudo apt install ros-$ROS_DISTRO-rtabmap*  
 
