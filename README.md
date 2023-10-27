@@ -217,6 +217,15 @@ The map is stored in the form of .db file which can be found in the hidden .ros 
 
 #  hardware Setup: 
 
+#  Power supply and charging
+the vinebot requires 48v to operate which is provided by four 12v batteries below the setup shown in figure 2. the 48 v from the batteries is connceted to the motor controller to supply power to the motors and the motor controller. two  DC to DC step down converters are used to convert 48v to 5v and 12 v respectively as shown in figure 2. To charge the btteries efficiently a battery equalizer is connected to the batteries. 
+the Vinebot can be connected to the power supply by joining the power cables behind the vinebot as shown in figure 4.
+
+![Alt text](images/power_conncetion.jpeg" power supply")
+<p align="center">
+Figure 4 "power supply conncetion, connect 1 with 2 to close the circuit.
+</p>
+
 
 
 # launch instructions 
