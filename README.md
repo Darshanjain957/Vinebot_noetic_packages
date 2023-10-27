@@ -150,7 +150,7 @@ For additional information about RealSense D455 refer: https://www.intelrealsens
 
  The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section. The ROS package realsesne-ros can be use to access the camera data,there are various launch files in the launch folder  located at "realsense-ros/realsense2_camera/launch". the launch file "realsense-ros/realsense2_camera/launch/rs_camera_imu.launch" launch the node that publishes camera data as well as the data from the IMU integrated into the camera.     Figure 3 depicts the front view for the vinebot with RealSense D455 and Livox Mid-40.
  
- ![Alt text](images/Vinbot_front.jpg "vinebot-front")
+ ![Alt text](/images/Vinbot_front.jpg "vinebot-front")
 <p align="center">
 Figure 2:Vinebot front view 1.- Livox Mid-40 and 2.- RealSense D455   
 </p>
@@ -183,12 +183,12 @@ Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a t
 The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish connection between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enabled and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3a depicts a sample broadcast code configuration file for the Livox Mid 40, andfigure 3b depicts a sample time synchronisation configuration for the Mid 40.
 
 
- ![Alt text](images/broadcast_code.jpg  "broadcastcode")
+ ![Alt text](/images/broadcast_code.jpg  "broadcastcode")
 <p align="center">
 Figure 3a: "livox_lidar_config.json" broadcast configuration, enable connect connects the LIDAR to ROS
 </p>
 
-![Alt text](images/timesync_config_1.jpg "time_sync")
+![Alt text](/images/timesync_config_1.jpg "time_sync")
 <p align="center">
 Figure 3b "livox_lidar_config.json" time sync configuration, Enable TimeSync and set Time circuit Port
 </p>
@@ -221,7 +221,7 @@ The map is stored in the form of .db file which can be found in the hidden .ros 
 the vinebot requires 48v to operate which is provided by four 12v batteries below the setup shown in figure 2. the 48 v from the batteries is connceted to the motor controller to supply power to the motors and the motor controller. two  DC to DC step down converters are used to convert 48v to 5v and 12 v respectively as shown in figure 2. To charge the btteries efficiently a battery equalizer is connected to the batteries. 
 the Vinebot can be connected to the power supply by joining the power cables behind the vinebot as shown in figure 4.
 
-![Alt text](images/power_conncetion.jpeg" power supply")
+![Alt text](/images/power_conncetion.jpeg "power supply")
 <p align="center">
 Figure 4 "power supply conncetion, connect 1 with 2 to close the circuit.
 </p>
