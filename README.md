@@ -223,10 +223,26 @@ the Vinebot can be connected to the power supply by joining the power cables beh
 
 ![Alt text](/images/power_conncetion.jpeg "power supply")
 <p align="center">
-Figure 4 "power supply conncetion, connect 1 with 2 to close the circuit.
+Figure 4 "Vinebot rear ", connect 1 with 2 to close the circuit.
+</p>
+charging of the vinebot requires an external charger, in order to efficiently charge the batteries it is adviced to set the voltage at 48v and the current value at low(3A -4A)  as shown in figure 5a. once the values are set and the vinebot is connceted to the power supply, the charging cable can be inserted into the charging port which is located on the left side of the vinebot as shown in figure 5b.
+
+![Alt text](/images/charger.jpeg "power supply")
+<p align="center">
+Figure 5a "Battery charger "1- power switch, 2 - ampire control, 3- voltage control and 4 charging cable.
 </p>
 
+![Alt text](/images/charging_port.jpeg "port")
+<p align="center">
+Figure 5b charging port,  charging cable from figure 5a should be connceted here. 
+</p>
 
+![Alt text](/images/charging_port.jpeg "port")
+<p align="center">
+Figure 5b charging port,  charging cable from figure 5a should be connceted here. 
+</p>
+the suffient charge required for the batteries is shown in figure 5c.
+if the batteries go below the suffient charge they would go into deep discharge mode and the batteries would not be charged, if such a situaton arrises than the 
 
 # launch instructions 
 
