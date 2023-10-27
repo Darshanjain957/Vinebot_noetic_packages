@@ -237,12 +237,12 @@ Figure 5a "Battery charger "1- power switch, 2 - ampire control, 3- voltage cont
 Figure 5b charging port,  charging cable from figure 5a should be connceted here. 
 </p>
 
-![Alt text](/images/charging_port.jpeg "port")
+![Alt text](/images/battery_status_indicator.PNG "battery indicator")
 <p align="center">
-Figure 5b charging port,  charging cable from figure 5a should be connceted here. 
+Figure 5c battery status indicator. 
 </p>
 the suffient charge required for the batteries is shown in figure 5c.
-if the batteries go below the suffient charge they would go into deep discharge mode and the batteries would not be charged, if such a situaton arrises than the 
+if the batteries go below the suffient charge (red zone from figure 5c) they would go into deep discharge mode and the batteries would not be charged, if such sitiation arises than the voltage and current  from figure 5a should be set as 48VH and medium to high current value respectively, it is advised not to charge the vinebot with higher values fro more than 5 minutes as this voltage values are used to bring the batteries out of deep discharge mode and prolonged charging of the betteries with higher values ight damage the batteries permanantly.
 
 # launch instructions 
 
