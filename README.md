@@ -202,7 +202,18 @@ RTAB-MAP can be installed using vaious methods, but the simplest method to insta
 
 i.e. $  sudo apt install ros-$ROS_DISTRO-rtabmap*  
 
-the launch files of RTABMAP are stored in the "/opt/ros/noetic" folder. A simplified version of the launch file(realsense-ros/realsense2_camera/launch/opensource_tracking.launch) to launch RTAB-MAP is proveded in the "realsense-ros/realsense2_camera/launch" folder. the latest version of the launch file with updated parameters is realsense-ros/realsense2_camera/launch/opensource_tracking_vinebot_imu.launch lcted in the same folder.
+the launch files of RTABMAP are stored in the "/opt/ros/noetic" folder. A simplified version of the launch file(realsense-ros/realsense2_camera/launch/opensource_tracking.launch) to launch RTAB-MAP is proveded in the "realsense-ros/realsense2_camera/launch" folder. the latest version of the launch file with updated parameters is realsense-ros/realsense2_camera/launch/opensource_tracking_vinebot_imu.launch located in the same folder.
+The map is stored in the form of .db file which can be found in the hidden .ros folder of the home directory. A new map is created everytime the opensoucetracking.launch file is launched,the map is stored in the rtabmap.db file. this file is necessary for the localization mode of RTABmap. The Localization mode can be accessed in two ways,one during the mapping and one after the map is created and the nodes are closed. rosservice  commands can be used to change between mapping and localization such that,
+
+ $ rosservice call /rtabmap/setmodelocalization
+ 
+ $ rosservice call /rtabmap/setmodemapping
+ 
+ The launch file to start the vinebot in loclization mode, provided an rtabmap.db file is available in the .ros folder, is located in the "realsense-ros/realsense2_camera/launch" folder.the launch file realsense-ros/realsense2_camera/launch/opensource_tracking_vinebot_localization_imu.launch  launches the latest verison of the localization node. 
+ In order to view and optimize an previously created map, rtabmap-databaseViewer can be used in the folder of the .db file.
+
+ $ ratbmap-databaseViewer rtabmap.db
+ 
 
 #  hardware Setup: 
 
