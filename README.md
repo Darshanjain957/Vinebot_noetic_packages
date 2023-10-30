@@ -1,3 +1,7 @@
+
+# Project VINEBOT
+VineBot is a field robotic platform designed for off-road, rough terrain environments, It is being developed from scratch at the Centre Robotics and Intelligence (CERI) department of Technical University of Applied Sciences Würzburg-Schweinfurt by a team of students. The VineBot is designed to automate agricultural tasks to aid farmers in viticulture. The VineBot can be equipped with a multitude of sensors and actuators like RGBD cameras, 3D LiDARs, GPS, IMU wheel encoders, motors, motor controllers, and various other tools to aid in tasks like autonomous navigation, ploughing, pesticide application, irrigation, and crop growth monitoring.
+
 # Vinebot_noetic_packages
 ROS packages developed for the vinebot, it includes updated versions of Vinbot_ros_packages, realsense ros wrapper, livox ros wrapper, and mapping packages and some additional packages. 
 Prerequisites and dependencies 
@@ -216,6 +220,7 @@ The map is stored in the form of .db file which can be found in the hidden .ros 
  
 
 #  hardware Setup: 
+The BLACKSTONE TB 4500 E (AGRIEURO, n.d.) acts as the base of the robotic platform. Two caterpillar rubber tracks connected to two DC brushless motors enable the VineBot to move in rough terrain, each motor requires 48v to operate at 400W, and the motors can achieve a maximum velocity of 6 Km/h. The motors are controlled by Roboteq’s Dual Channel motor controller Roboteq HBL2350. The motor controller receives digital / analog commands from the PC or the microcontroller through a USB port via RS-232 protocol. The two-wheel encoders, mounted behind the motors count the number of rotations made on each wheel and send raw wheel odometry data through HBL2350 controller. Two IMU sensors, the Tinkerforge IMU Brick 2.0 and the Adafruit BNO055 are mounted on the front and back side of the VineBot. The IMU sensors measure and improve the odometry of the VineBot and are also used for localization of the VineBot. Four 12v rechargeable batteries are used as the power source for the VineBot, additional step-down transformers are used to convert 48v DC to 5v DC for the Raspberry Pi/Jetson Xavier and 48v DC to 12v DC for the LiDAR. F 21 E1 RX, a wireless crane remote control, is used as an emergency brake for the VineBot.
 
 #  Power supply and charging
 the vinebot requires 48v to operate which is provided by four 12v batteries below the setup shown in figure 2. the 48 v from the batteries is connceted to the motor controller to supply power to the motors and the motor controller. two  DC to DC step down converters are used to convert 48v to 5v and 12 v respectively as shown in figure 2. To charge the btteries efficiently a battery equalizer is connected to the batteries. 
