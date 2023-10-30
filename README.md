@@ -1,7 +1,8 @@
 
 <p align="center">
  
-![Alt text](/images/VINEBOT.gif "Vinebotgif")
+<img width="700" height="500" src="/images/VINEBOT.gif">
+
 </p>
 # Project VineBot
 VineBot is a field robotic platform designed for off-road, rough terrain environments, It is being developed from scratch at the Centre Robotics and Intelligence (CERI) department of Technical University of Applied Sciences Würzburg-Schweinfurt by a team of students. The VineBot is designed to automate agricultural tasks to aid farmers in viticulture. The VineBot can be equipped with a multitude of sensors and actuators like RGBD cameras, 3D LiDARs, GPS, IMU wheel encoders, motors, motor controllers, and various other tools to aid in tasks like autonomous navigation, ploughing, pesticide application, irrigation, and crop growth monitoring.
@@ -88,7 +89,7 @@ source ~/.bashrc
 # Operating the vinebot:
 the vinebot runS on Linux based system (Ubuntu 20.04) and uses ROS noetic for the pacckage integration and it is ecquipped with various sensors and actators. the Vinebot uses a generic version of Roboteq dual motor controller(HBL2350) to control Dual DC servomotors. The motor controller is capable of accepting commands from PC/ microcontroller via USB port and using the protocol RS-232 with support for analog and digital I/O capabilities. Figure 1 depicts the system overview  and layout of the vinebot.
 
-![Alt text](/images/PIC_OVERVIEW.PNG "VINEBOT-LAYOUT")
+<img src = "images/PIC_OVERVIEW.PNG">
 <p align="center">
 Figure 1: layout of the robot. 
 </p>
@@ -112,7 +113,7 @@ Max velocity 6 km/h
 Climbing slope 45 degrees
 
 
-![Alt text](/images/vinebot_hardware_setup.jpeg "VINEBOT-hardware setup")
+<img src ="/images/vinebot_hardware_setup.jpeg">
 <p align="center">
 Figure 2: 1.- DC power source from the batteries (48v), 2.-Motor Controller, 3.- 48v to 5v DC to DC converter, 4.- 48v to 12v DC to DC converter, 5.- BNO055 IMU Sensor and 6.- Wireless Emergency stop. 
 </p>
@@ -158,7 +159,7 @@ For additional information about RealSense D455 refer: https://www.intelrealsens
 
  The camera uses USB to communicate with the operating system. the integration of the camera into ros and the operating system requires a set of libraties provided by RealSense which can be installed by following instrucions provided in the  Realsense2 sdk installation section. The ROS package realsesne-ros can be use to access the camera data,there are various launch files in the launch folder  located at "realsense-ros/realsense2_camera/launch". the launch file "realsense-ros/realsense2_camera/launch/rs_camera_imu.launch" launch the node that publishes camera data as well as the data from the IMU integrated into the camera.     Figure 3 depicts the front view for the vinebot with RealSense D455 and Livox Mid-40.
  
- ![Alt text](/images/Vinbot_front.jpg "vinebot-front")
+ <img src ="/images/Vinbot_front.jpg ">
 <p align="center">
 Figure 2:Vinebot front view 1.- Livox Mid-40 and 2.- RealSense D455   
 </p>
@@ -190,13 +191,16 @@ Livox_ros_driver requires Livox SDK to operate, the ros driver also requires a t
 
 The Launch folder "ws_livox/src/livox_ros_driver/launch" of Livox_ros__driver has a variety of packages, for instance the package Livox_Lidar_rviz.launch file launches RVIZ with point cloud visualization from livox mid 40. In order to establish connection between Livox Mid 40, Time-Synchronization circuit and ROS the Config file "livox_lidar_config.json" from "ws_livox/src/livox_ros_driver/config" folder must be updated with the LIDAR's Broadcasting Number which can be obtained by utilizing Livox-Viewer. Once the Broadcast number is added Time Synchronization must be enabled and the port which connects the Time-Synchronization circuit with the the Microcontroller or PC must be mentioned. Figure 3a depicts a sample broadcast code configuration file for the Livox Mid 40, andfigure 3b depicts a sample time synchronisation configuration for the Mid 40.
 
+<p align="center">
 
- ![Alt text](/images/broadcast_code.jpg  "broadcastcode")
+ <img src = "/images/broadcast_code.jpg">
+</p>
 <p align="center">
 Figure 3a: "livox_lidar_config.json" broadcast configuration, enable connect connects the LIDAR to ROS
 </p>
-
-![Alt text](/images/timesync_config_1.jpg "time_sync")
+<p align="center">
+<img src = "/images/timesync_config_1.jpg">
+</p>
 <p align="center">
 Figure 3b "livox_lidar_config.json" time sync configuration, Enable TimeSync and set Time circuit Port
 </p>
@@ -230,23 +234,24 @@ The BLACKSTONE TB 4500 E (AGRIEURO, n.d.) acts as the base of the robotic platfo
 the vinebot requires 48v to operate which is provided by four 12v batteries below the setup shown in figure 2. the 48 v from the batteries is connceted to the motor controller to supply power to the motors and the motor controller. two  DC to DC step down converters are used to convert 48v to 5v and 12 v respectively as shown in figure 2. To charge the btteries efficiently a battery equalizer is connected to the batteries. 
 the Vinebot can be connected to the power supply by joining the power cables behind the vinebot as shown in figure 4.
 
-![Alt text](/images/power_conncetion.jpeg "power supply")
+<img src = "/images/power_conncetion.jpeg">
 <p align="center">
 Figure 4 "Vinebot rear ", connect 1 with 2 to close the circuit.
 </p>
 charging of the vinebot requires an external charger, in order to efficiently charge the batteries it is adviced to set the voltage at 48v and the current value at low(3A -4A)  as shown in figure 5a. once the values are set and the vinebot is connceted to the power supply, the charging cable can be inserted into the charging port which is located on the left side of the vinebot as shown in figure 5b.
 
-![Alt text](/images/charger.jpeg "power supply")
+<img src ="/images/charger.jpeg ">
 <p align="center">
 Figure 5a "Battery charger "1- power switch, 2 - ampire control, 3- voltage control and 4 charging cable.
 </p>
 
-![Alt text](/images/charging_port.jpeg "port")
+<img src ="/images/charging_port.jpeg">
 <p align="center">
 Figure 5b charging port,  charging cable from figure 5a should be connceted here. 
 </p>
-
-![Alt text](/images/battery_status_indicator.PNG "battery indicator")
+<p align="center">
+<img src ="/images/battery_status_indicator.PNG ">
+</p>
 <p align="center">
 Figure 5c battery status indicator. 
 </p>
