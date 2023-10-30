@@ -268,6 +268,7 @@ the emergency brake consists of two main modules, the brake moodule directly con
 <p align="center">
 Figure 6 Emergenct stop remote controller , 1- Red Button (to stop the movement), To release the brake twist the red  button (1) and press the green button(2). 
 </p>
+
 # launch instructions 
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
