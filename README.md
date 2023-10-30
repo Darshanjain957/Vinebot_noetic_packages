@@ -260,7 +260,14 @@ The suffient charge required for the batteries is shown in figure 5c.
 if the batteries go below the suffient charge (red zone from figure 5c) they would go into deep discharge mode and the batteries would not be charged, if such sitiation arises than the voltage and current  from figure 5a should be set as 48VH and medium to high current value respectively, it is advised not to charge the vinebot with higher values for more than 5 minutes as these  values are used to bring the batteries out of deep discharge mode and prolonged charging of the betteries with higher values might damage the batteries permanantly. Once the batteries are out of deep discharge mode they can be charged usin the normal charging procedure.
 
 # Emergency stop 
-
+F 21 E1 RX, a wireless crane remote control is the emergency brake. more information about the emergency brake can be found from https://www.telecrane.com/product-info.asp?id=201 .
+the emergency brake consists of two main modules, the brake moodule directly connected to the motor controller as shown in figure 2, and two wireless remote controllers. The VineBots movements could be halted using the emergency brakes when applied, to apply the emergenct brake simply press the red button on the wireless controller(figure 6) to stop the vinebots movements. In order to the release the brakes twist the red knob, and press the green button in the emergency brakes,as shown in figure 6,for the vinebot to move both the wireless brakes must be released.
+<p align="center">
+<img src ="images/emergeny_stop.jpeg ">
+</p>
+<p align="center">
+Figure 6 Emergenct stop remote controller , 1- Red Button (to stop the movement), To release the brake twist the red  button (1) and press the green button(2). 
+</p>
 # launch instructions 
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
