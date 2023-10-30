@@ -269,6 +269,8 @@ the emergency brake consists of two main modules, the brake moodule directly con
 Figure 6 Emergenct stop remote controller , 1- Red Button (to stop the movement), To release the brake twist the red  button (1) and press the green button(2). 
 </p>
 
+# PS4 
+The vinebot can be controlled using a ps4 joystick 
 # launch instructions 
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
