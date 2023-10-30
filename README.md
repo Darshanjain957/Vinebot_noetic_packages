@@ -1,4 +1,8 @@
+
+<p align="center">
+ 
 ![Alt text](/images/VINEBOT.gif "Vinebotgif")
+</p>
 # Project VineBot
 VineBot is a field robotic platform designed for off-road, rough terrain environments, It is being developed from scratch at the Centre Robotics and Intelligence (CERI) department of Technical University of Applied Sciences Würzburg-Schweinfurt by a team of students. The VineBot is designed to automate agricultural tasks to aid farmers in viticulture. The VineBot can be equipped with a multitude of sensors and actuators like RGBD cameras, 3D LiDARs, GPS, IMU wheel encoders, motors, motor controllers, and various other tools to aid in tasks like autonomous navigation, ploughing, pesticide application, irrigation, and crop growth monitoring.
 
