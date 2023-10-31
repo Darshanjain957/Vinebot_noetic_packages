@@ -277,8 +277,47 @@ joystick driver:          $ sudo apt install ros-noetic-joy
 
 ds4drv:                   $ sudo pip install ds4drv
 
-in order to use the joystick with ROS it must be paired before starting the launch files,  press the Playstation button + share button for ~5 sec this will put the joystick in pairing mode once the joystick is in pairing mode conncet it to the PCor the microcontroller with the ROS code. Once the Joystick is paired it pairs automatically with the microcontroller. 
+in order to use the joystick with ROS it must be paired before starting the launch files,  press the Playstation button + share button for ~5 sec this will put the joystick in pairing mode once the joystick is in pairing mode conncet it to the PCor the microcontroller with the ROS code. 
+Once the Joystick is paired, it connects to the microcontroller automatically.
 
+*Note: The joystick's ros node and other steps must be started after the "bringup.launch" files are called.
+once the bringup-launch files to drive the vinebot are launched 
+the following steps must be followed. 
+(starting the node for the first time)
+ *(requires password)$ sudo su root 
+ 
+open ds4drv:                                                                 $ ds4drv
+
+register the device in most cases X is  1                                $ sudo chmod a+rw /dev/input/jsX
+
+the registration process must be done once. after the device is registered the following steps mut be followed. 
+
+
+Set the parameter value as  so the ros node knows which device it should use  $ rosparam set joy_node/dev "/dev/input/jsX"
+
+ start the joystick node                                                      $ rosrun joy joy_node
+
+ start the ps4 node                                                           $ rosrun ps4_ros ps4_ros
+
+the following steps are summarized and created in a shell script which is "/shell scripts and instructions/startjoystick.sh" .
+the joystick number defined here is js1 if the joystick is not registering as js1 then the parameter value must be chaanged to the device number the joystick is  registered.
+
+Once the joystick is calibrated the keys used to move the vinebot are listed below, or better understanding refer figure 7, where the layout of the joustick is showm.
+
+L2-Accelerate/move forward
+R2-decelerate/move backward
+L knob - lean left to turn left, lean right to turn right
+L2+X - turbo acceleration 
+R2+X - turbo acceleration (reverse direction)
+Square button- Brake 
+
+note using the turbo acceleratio for prolonged mode indoors might cause injury as the joystick waits for the time cycle to end and it might take additiona seconds to sotp the vinebot.
+<p align="center">
+<img src ="images/ps4schematics.png ">
+</p>
+<p align="center">
+Figure 7 Layout of the joystick.
+</p>
 
 # launch instructions 
 
