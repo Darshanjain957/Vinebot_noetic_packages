@@ -270,7 +270,16 @@ Figure 6 Emergenct stop remote controller , 1- Red Button (to stop the movement)
 </p>
 
 # PS4 
-The vinebot can be controlled using a ps4 joystick. ROS requires a couple of nodes additional to the ps4 ros package located in 
+The vinebot can be controlled using a ps4 joystick. ROS requires a couple of nodes additional to the ps4 ros package (Vinebot_ROS_Packages/ps4-ros) which can be installed using the following commands.
+
+
+joystick driver:          $ sudo apt install ros-noetic-joy
+
+ds4drv:                   $ sudo pip install ds4drv
+
+in order to use the joystick with ROS it must be paired before starting the launch files,  press the Playstation button + share button for ~5 sec this will put the joystick in pairing mode once the joystick is in pairing mode conncet it to the PCor the microcontroller with the ROS code. Once the Joystick is paired it pairs automatically with the microcontroller. 
+
+
 # launch instructions 
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
