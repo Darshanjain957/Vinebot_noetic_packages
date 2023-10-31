@@ -228,7 +228,7 @@ The map is stored in the form of .db file which can be found in the hidden .ros 
  $ ratbmap-databaseViewer rtabmap.db
  
 
-#  hardware Setup: 
+#  Hardware Setup: 
 The BLACKSTONE TB 4500 E (AGRIEURO, n.d.) acts as the base of the robotic platform. Two caterpillar rubber tracks connected to two DC brushless motors enable the VineBot to move in rough terrain, each motor requires 48v to operate at 400W, and the motors can achieve a maximum velocity of 6 Km/h. The motors are controlled by Roboteq’s Dual Channel motor controller Roboteq HBL2350. The motor controller receives digital / analog commands from the PC or the microcontroller through a USB port via RS-232 protocol. The two-wheel encoders, mounted behind the motors count the number of rotations made on each wheel and send raw wheel odometry data through HBL2350 controller. Two IMU sensors, the Tinkerforge IMU Brick 2.0 and the Adafruit BNO055 are mounted on the front and back side of the VineBot. The IMU sensors measure and improve the odometry of the VineBot and are also used for localization of the VineBot. Four 12v rechargeable batteries are used as the power source for the VineBot, additional step-down transformers are used to convert 48v DC to 5v DC for the Raspberry Pi/Jetson Xavier and 48v DC to 12v DC for the LiDAR. F 21 E1 RX, a wireless crane remote control, is used as an emergency brake for the VineBot.
 
 #  Power supply and charging
@@ -270,7 +270,7 @@ Figure 6 Emergenct stop remote controller , 1- Red Button (to stop the movement)
 </p>
 
 # PS4 
-The vinebot can be controlled using a ps4 joystick 
+The vinebot can be controlled using a ps4 joystick. ROS requires a couple of nodes additional to the ps4 ros package located in 
 # launch instructions 
 
 to launch vinebot with rtabmap in the mapping node with ekf filter based fused localization
