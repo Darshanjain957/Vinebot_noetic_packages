@@ -344,5 +344,48 @@ $ roslaunch roboteq_control bringup_rtab_localization_imu.launch
 
 
 
+# Additional Instructions
+
+to update and upgrade the packages
+
+$ sudo apt update
+
+$ sudo apt upgrade
+
+To list all (USB) devices connected to the microcontroller 
+
+to list all devices $ ls /dev/tty* 
+
+to list only USB $ ls /dev/ttyUSB*
+
+To make file executable(mostly python files require this)
+
+this command gives permission to make a python file executable   $ sudo chmod +x <location of the file>
+eg sudo chmod +x /usr/share/testfolder/aFile 
+
+ros commands 
+
+list available nodes $ rosode list
+
+to close a specific node $ rosnode kill <nodes name>
+
+to test conncetivity to the node $ rosnode ping  <nodes name>
+
+list available topics $  rostopic list 
+
+to get info about the topic $ rostopic info <topics name>
+
+check if the topic is pub/sub messages $ rostopic echo <topics name>
+
+
+to list available services$ rosservice list 
+
+to call a pecific service $ rosservice call <name of the service >
+
+to run diagnostics $ roswtf
+
+to open RQT $ rqt
+
+
 
 
